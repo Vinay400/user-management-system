@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>REST API</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 20px;
+            }
+            h1 {
+                color: #333;
+            }
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            button {
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                margin: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            li {
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Managing Users using CRUD</h1>
+        <form action="/api/update/search" method="post">
+            <input name="id" id="userId" placeholder="Enter the id or name" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="update-form">
+            <% if(typeof user !== 'undefined') { %>
+                <form id="updateForm">
+                    <div class="user-info">
+                        <p>ID: <%= user.id %></p>
+                        <label>First Name:</label>
+                        <input type="text" name="first_name" value="<%= user.first_name %>"><br>
+                        <label>Last Name:</label>
+                        <input type="text" name="last_name" value="<%= user.last_name %>"><br>
+                        <label>Email:</label>
+                        <input type="email" name="email" value="<%= user.email %>"><br>
+                        <label>Gender:</label>
+                        <select name="gender">
+                            <option value="Male" <%= user.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                            <option value="Female" <%= user.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                            <option value="Other" <%= user.gender === 'Other' ? 'selected' : '' %>>Other</option>
+                        </select><br>
+                        <button type="submit" onclick="updateUser(<%= user.id %>)">Update User</button>
+                    </div>
+                </form>
+            <% } %>
+        </div>
+
+        <script>
+        function updateUser(userId) {
+            event.preventDefault();
+            const form = document.getElementById('updateForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            fetch(`/api/updation/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/api/users';
+                } else {
+                    alert('Error updating user');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error updating user');
+            });
+        }
+        </script>
+    </body>
+</html>

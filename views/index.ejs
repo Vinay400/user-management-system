@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>REST API</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 20px;
+            }
+            h1 {
+                color: #333;
+            }
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            button {
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                margin: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            li {
+                display: inline-block;
+            }
+        </style>
+            <script>
+                function reg(){document.getElementById('Registered').addEventListener('click', ()=>{
+                    window.location.href = "/api/users";
+                    console.log("Button Clicked");
+                }); }
+                function newuser(){
+                    document.getElementById('newuser').addEventListener('click', ()=>{
+                        window.location.href = "/api/newuser";
+                    })
+                }
+                function update(){
+                    document.getElementById('updation').addEventListener('click', ()=>{
+                        window.location.href = "/api/updation";
+                    })
+                }
+                function deleting(){
+                    document.getElementById('deleting').addEventListener('click', ()=>{
+                        window.location.href = "/api/deletion";
+                    })
+                }
+                </script>
+    </head>
+    <body>
+        <h1>Managing Users using CRUD</h1>
+        <ul>
+            <li><button id="Registered" onclick="reg()"><h4>Registered Users Details</h4></button></li>
+            <li><button id="newuser" onclick="newuser()"><h4>Create New User</h4></button></li>
+            <li><button id="updation" onclick="update()"><h4>Update User's Data</h4></button></li>
+            <li><button id="deleting" onclick="deleting()"><h4>Deleting Users</h4></button></li>
+        </ul>
+    
+    </body>
+</html>

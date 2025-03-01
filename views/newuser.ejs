@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>REST API</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 20px;
+            }
+            h1 {
+                color: #333;
+            }
+            button {
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                margin: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Managing Users using CRUD</h1>
+        <form action="/api/newuser" method="post">
+        <label>Enter the first name of User : </label><input type="text" name="first" required><br>
+        <br>
+        <label>Enter the last name of user : </label><input type="text" name="last" required><br>
+        <br>
+        <label>Enter email :  </label><input type="text" name="email" required><br>
+        <br>
+        <label>Enter your Gender :</label>
+        <select name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="other">Other</option></select>
+        <br><br>
+        <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
